@@ -1,3 +1,5 @@
+output_precision(6);
+
 % Zadani
 U = 200;
 R1 = 70;

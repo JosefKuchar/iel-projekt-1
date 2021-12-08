@@ -1,3 +1,87 @@
 \section{Příklad 3}
 % Jako parametr zadejte skupinu (A-H)
 \tretiZadani{G}
+
+$$
+  I_1 - I_{G1} + I_{G4} + I_{G5} + I_Z = 0
+$$
+$$
+  I_2 - I_{G3} - I_{G4} - I_{G5} - I_Z = 0
+$$
+$$
+  I_{G3} - I_{G2} - I_2 = 0
+$$
+
+$$
+  -G_1 U_A + G_4 (U_B - U_A) + G_5 (U_B - U_A) = -I_1 - I_Z
+$$
+$$
+  -G_3 (U_B - U_C) - G_4 (U_B - U_A) - G_5 (U_B - U_A) = I_Z - I_2
+$$
+$$
+  G_3 (U_B - U_C) - G_2 U_C = I_2
+$$
+
+$$
+  U_A (-G_1 - G_4 - G_5) + U_B (G_4 + G_5) = -I_1 - I_Z
+$$
+$$
+  U_A (G_4 + G_5) + U_B (-G_3 - G_4 -G_5) + U_C (G_3) = I_Z - I_2
+$$
+$$
+  U_B (G_3) + U_C (-G_3 - G_2) = I_2
+$$
+
+$$
+  \begin{pmatrix}
+    -G_1-G_4-G_5 & G_4+G_5      & 0        \\
+    G_4+G_5      & -G_3-G_4-G_5 & G_3      \\
+    0            & G_3          & -G_3-G_2
+  \end{pmatrix}
+  \cdot
+  \begin{pmatrix}
+    U_A \\
+    U_B \\
+    U_C
+  \end{pmatrix}
+  =
+  \begin{pmatrix}
+    -I_1-I_Z \\
+    I_Z-I_2  \\
+    I_2
+  \end{pmatrix}
+$$
+
+$$
+  \begin{pmatrix}
+    -0.086525 & 0.064786  & 0         \\
+    0.064786  & -0.083654 & 0.018868  \\
+    0         & 0.018868  & -0.043258
+  \end{pmatrix}
+  \cdot
+  \begin{pmatrix}
+    U_A \\
+    U_B \\
+    U_C
+  \end{pmatrix}
+  =
+  \begin{pmatrix}
+    -6.1672 \\
+    5.0672  \\
+    0.4500
+  \end{pmatrix}
+$$
+
+$$
+  \begin{pmatrix}
+    U_A \\
+    U_B \\
+    U_C
+  \end{pmatrix}
+  =
+  \begin{pmatrix}
+    53.312  \\
+    -23.993 \\
+    -20.868
+  \end{pmatrix}
+$$

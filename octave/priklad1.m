@@ -1,3 +1,5 @@
+output_precision(6);
+
 % Zadani
 U1 = 100;
 U2 = 80;

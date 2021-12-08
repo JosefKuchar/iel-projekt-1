@@ -35,11 +35,12 @@
 
 % matematika
 \RequirePackage{amsmath}
+\usepackage{gensymb}
 
 % klikatelné odkazy (sekce v obsahu)
 \RequirePackage[unicode]{hyperref}
 
-% kreslení obvodů 
+% kreslení obvodů
 \usepackage[european,straightvoltages,betterproportions,EFvoltages]{circuitikz}
 
 % jednotky
@@ -75,20 +76,20 @@
 \fi
 
 \AtEndOfClass{
-    % použité značky 
+    % použité značky
     \newcommand{\Vo}{\si \volt}
     \newcommand{\Am}{\si \ampere}
     \newcommand{\uF}{\si {\micro\farad}}
     \newcommand{\mH}{\si {\milli\henry}}
     \newcommand{\Hz}{\si \hertz}
     \newcommand{\F}{\si \farad}
-    
+
     % prvni priklad
 
     \newcommand{\prvniZadani}[1]{
         \def\prvniSkupina{#1}
         Stanovte napětí $U_{R7}$ a proud $I_{R7}$. Použijte metodu postupného zjednodušování obvodu. \\
-        
+
         \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|} \hline
 sk. & $U_1$ [\Vo] & $U_2$ [\Vo]  & $R_1$ [$\Omega$] & $R_2$ [$\Omega$] & $R_3$ [$\Omega$] & $R_4$ [$\Omega$] & $R_5$ [$\Omega$] & $R_6$ [$\Omega$] & $R_7$ [$\Omega$] & $R_8$ [$\Omega$] \\ \hline
     \ifthenelse{\equal{#1}{A}}
@@ -108,15 +109,15 @@ sk. & $U_1$ [\Vo] & $U_2$ [\Vo]  & $R_1$ [$\Omega$] & $R_2$ [$\Omega$] & $R_3$ [
     \ifthenelse{\equal{#1}{H}}
     {H & 135 & 80 & 680 & 600 & 260 & 310 & 575 & 870 & 355 & 265}{}
     \\ \hline \end{tabular} \\
-    
-    \includegraphics[scale=0.5,keepaspectratio]{fig/Pr1.pdf} \\ 
+
+    \includegraphics[scale=0.5,keepaspectratio]{fig/Pr1.pdf} \\
     }
-        
+
     % druhy priklad
     \newcommand{\druhyZadani}[1]{
         \def\druhySkupina{#1}
         Stanovte napětí $U_{R1}$ a proud $I_{R1}$. Použijte metodu Théveninovy věty. \\
-        
+
          \begin{tabular}{|c|c|c|c|c|c|c|c|} \hline
 sk. & $U$ [\Vo] & $R_1$ [$\Omega$] & $R_2$ [$\Omega$] & $R_3$ [$\Omega$] & $R_4$ [$\Omega$] & $R_5$ [$\Omega$] \\ \hline
     \ifthenelse{\equal{#1}{A}}
@@ -136,15 +137,15 @@ sk. & $U$ [\Vo] & $R_1$ [$\Omega$] & $R_2$ [$\Omega$] & $R_3$ [$\Omega$] & $R_4$
     \ifthenelse{\equal{#1}{H}}
     {H & 220 & 190 & 360 & 580 & 205 & 560}{}
     \\ \hline \end{tabular} \\
-    
+
     \includegraphics[scale=0.5,keepaspectratio]{fig/Pr2.pdf} \\
     }
 
     % treti priklad
     \newcommand{\tretiZadani}[1]{
         \def\tretiSkupina{#1}
-        Stanovte napětí $U_{R3}$ a proud $I_{R3}$. Použijte metodu uzlových napětí ($U_A$, $U_B$, $U_C$). 
-        
+        Stanovte napětí $U_{R3}$ a proud $I_{R3}$. Použijte metodu uzlových napětí ($U_A$, $U_B$, $U_C$).
+
         \begin{tabular}{|c|c|c|c|c|c|c|c|c|} \hline
 sk. & $U$ [\Vo] & $I_1$ [\Am] & $I_2$ [\Am] & $R_1$ [$\Omega$] & $R_2$ [$\Omega$] & $R_3$ [$\Omega$] & $R_4$ [$\Omega$] & $R_5$ [$\Omega$] \\ \hline
     \ifthenelse{\equal{#1}{A}}
@@ -164,10 +165,10 @@ sk. & $U$ [\Vo] & $I_1$ [\Am] & $I_2$ [\Am] & $R_1$ [$\Omega$] & $R_2$ [$\Omega$
     \ifthenelse{\equal{#1}{H}}
     {H & 130 & 0.95 & 0.50 & 47 & 39 & 58 & 28 & 25}{}
     \\ \hline \end{tabular} \\
-    
+
     \includegraphics[scale=0.5,keepaspectratio]{fig/Pr3.pdf} \\
     }
-    
+
     % ctvrty  priklad
     \newcommand{\ctvrtyZadani}[1]{
         \def\ctvrtySkupina{#1}
@@ -176,7 +177,7 @@ Ve vztahu pro napětí $u_{L_{2}}=U_{L_2}{\cdot}\sin(2{\pi}ft+\varphi_{L_{2}})$
 určete $|U_{L_{2}}|$ a $\varphi_{L_{2}}$. Použijte metodu smyčkových proudů.\\
 
 Pozn: Pomocné směry šipek napájecích zdrojů platí pro speciální časový okamžik ($t=\frac{\pi}{2{\omega}}$).
-        
+
         \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|} \hline
 sk. & $U_1$ [\Vo] & $U_2$ [\Vo] & $R_1$ [$\Omega$] & $R_2$ [$\Omega$] & $L_{1}$ [\mH] & $L_{2}$ [\mH] & $C_1$ [$\uF$] & $C_2$ [$\uF$] & $f$ [\Hz] \\ \hline
     \ifthenelse{\equal{#1}{A}}
@@ -204,7 +205,7 @@ sk. & $U_1$ [\Vo] & $U_2$ [\Vo] & $R_1$ [$\Omega$] & $R_2$ [$\Omega$] & $L_{1}$ 
         \def\patySkupina{#1}
         V obvodu na obrázku níže v čase $t=0$ [s] sepne spínač $S$. Sestavte diferenciální rovnici popisující chování obvodu na obrázku, dále ji upravte dosazením hodnot parametrů. Vypočítejte analytické řešení
 $u_{C}~=~f(t)$. Proveďte kontrolu výpočtu dosazením do sestavené diferenciální rovnice.\\
-        
+
         \begin{tabular}{|c|c|c|c|c|} \hline
         sk. & $U$ [\Vo] & $R$ [$\Omega$] & $C$ [\F] & $u_C(0)$ [\Vo] \\ \hline
     \ifthenelse{\equal{#1}{A}}
@@ -226,5 +227,5 @@ $u_{C}~=~f(t)$. Proveďte kontrolu výpočtu dosazením do sestavené diferenci�
     \\ \hline \end{tabular} \\
     \includegraphics[scale=0.5,keepaspectratio]{fig/Pr5.pdf} \\
     }
-    
+
 }
