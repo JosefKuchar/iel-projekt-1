@@ -2,6 +2,46 @@
 % Jako parametr zadejte skupinu (A-H)
 \tretiZadani{G}
 
+Schéma po převedení napěťového zdroje na proudový s vyznačenými zvolenými proudy.
+
+\begin{circuitikz}
+  \draw
+  (0,0) to[ioosource, i^=$I_1$]  (0,3)
+  (0,3) -* (2,3)
+  (2,0) to[R, l^=$G_1$, i<=$I_{G1}$]     (2,3)
+  (2,3) to[R, l^=$G_4$, i<=$I_{G4}$]     (5,3)
+  (2,4) to[R, l^=$G_5$, i<=$I_{G5}$]     (5,4)
+  (2,5) to[ioosource, i<=$I_Z$]  (5,5)
+  (2,3) -- (2,5)
+  (5,3) -- (5,5)
+  (5,3) to[R, l^=$G_3$, i=$I_{G3}$]     (5,0)
+  (0,0) -- (2,0)
+  (2,0) to[R, l^=$G_2$, i<=$I_{G2}$]     (5,0)
+  (5,0) -- (7,0)
+  (7,0) to[ioosource, i^=$I_2$]  (7,3)
+  (5,3) -- (7,3)
+  (2,0) node[circ]{}        (2,0)
+  (5,0) node[circ]{}        (5,0)
+  (2,3) node[circ]{}        (2,3)
+  (2,4) node[circ]{}        (2,4)
+  (5,3) node[circ]{}        (5,3)
+  (5,4) node[circ]{}        (5,4)
+  {[anchor=south east] (2,3) node{A}}
+    {[anchor=south west] (5,3) node{B}}
+    {[anchor=north west] (5,0) node{C}}
+  ;
+\end{circuitikz}
+
+Nejprve převedeme všechny odpory na vodivosti
+
+$$ G_1 = 1 / R_1 $$
+$$ G_2 = 1 / R_2 $$
+$$ G_3 = 1 / R_3 $$
+$$ G_4 = 1 / R_4 $$
+$$ G_5 = 1 / R_5 $$
+
+Sestavené rovnice pro uzly použítím I. Kirchhoffova zákona
+
 $$
   I_1 - I_{G1} + I_{G4} + I_{G5} + I_Z = 0
 $$
@@ -11,6 +51,8 @@ $$
 $$
   I_{G3} - I_{G2} - I_2 = 0
 $$
+
+Vyjádření neznámých proudů pomocí napětí a vodivostí
 
 $$
   -G_1 U_A + G_4 (U_B - U_A) + G_5 (U_B - U_A) = -I_1 - I_Z
@@ -22,6 +64,8 @@ $$
   G_3 (U_B - U_C) - G_2 U_C = I_2
 $$
 
+Po vytknutní napětí dostaváme
+
 $$
   U_A (-G_1 - G_4 - G_5) + U_B (G_4 + G_5) = -I_1 - I_Z
 $$
@@ -31,6 +75,8 @@ $$
 $$
   U_B (G_3) + U_C (-G_3 - G_2) = I_2
 $$
+
+Následně soustavu rovnic převedeme do matice
 
 $$
   \begin{pmatrix}
@@ -51,6 +97,19 @@ $$
     I_2
   \end{pmatrix}
 $$
+
+Po vypočítání matice už snadno vypočítáme napětí $U_{R3}$ a proud $I_{R3}$
+
+$$ U_{R3} = U_B - U_C $$
+$$ I_{R3} = U_{R3} G_{3} $$
+
+Dosazení
+
+$$ G_1 = \frac{1}{46} S $$
+$$ G_2 = \frac{1}{41} S $$
+$$ G_3 = \frac{1}{53} S$$
+$$ G_4 = \frac{1}{33} S$$
+$$ G_5 = \frac{1}{29} S$$
 
 $$
   \begin{pmatrix}
@@ -80,8 +139,11 @@ $$
   \end{pmatrix}
   =
   \begin{pmatrix}
-    53.312  \\
-    -23.993 \\
-    -20.868
+    53.3124  \\
+    -23.9928 \\
+    -20.8676
   \end{pmatrix}
 $$
+
+$$ U_{R3} = -23.9928 - (-20.8676) = -3.1252 V $$
+$$ I_{R3} = -3.1252 \cdot \frac{1}{53} = -5.8965 \cdot 10^{-2} A $$

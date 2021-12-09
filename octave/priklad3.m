@@ -11,11 +11,11 @@ R4 = 33;
 R5 = 29;
 
 % Prepocet na vodivosti
-G1 = 1 / R1;
-G2 = 1 / R2;
-G3 = 1 / R3;
-G4 = 1 / R4;
-G5 = 1 / R5;
+G1 = 1 / R1
+G2 = 1 / R2
+G3 = 1 / R3
+G4 = 1 / R4
+G5 = 1 / R5
 
 % Prepocet napetoveho zdroje na proudovy
 Iz = U / R5;
