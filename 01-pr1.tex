@@ -1,7 +1,7 @@
 \section{Příklad 1}
 % Jako parametr zadejte skupinu (A-H)
 \prvniZadani{C}
-\subsection{Výpočet $R_{ekv}$}
+\subsection{Výpočet odporu $R_{ekv}$}
 \begin{figure}[H]
   Zjednodušení sériově zapojených zdrojů: $ U = U_1 + U_2$
 
@@ -107,9 +107,9 @@
 
   \begin{equation*}
     \begin{aligned}
-      R_A &= \frac{R_1 \cdot R_2}{R_1 + R_2 + R_3} \\
-      R_B &= \frac{R_1 \cdot R_3}{R_1 + R_2 + R_3} \\
-      R_C &= \frac{R_2 \cdot R_3}{R_1 + R_2 + R_3}
+      R_A & = \frac{R_1 \cdot R_2}{R_1 + R_2 + R_3} \\
+      R_B & = \frac{R_1 \cdot R_3}{R_1 + R_2 + R_3} \\
+      R_C & = \frac{R_2 \cdot R_3}{R_1 + R_2 + R_3}
     \end{aligned}
   \end{equation*}
 \end{figure}
@@ -161,4 +161,40 @@
     (0,0) --                    (3,0)
     ;
   \end{circuitikz}
+\end{figure}
+
+\subsection{Výpočet $U_{R7}$ a $I_{R7}$}
+\begin{figure}[H]
+  Výpočet celkového proudu v obvodu
+  $$ I = \frac{U}{R_{ekv}} $$
+  Zpětné dopočítání proudu a napětí na $R_7$
+  $$ U_{BC4567} = R_{BC4567} I $$
+  $$ I_{B457} = \frac{U_{BC4567}}{R_{B457}} $$
+  $$ I_{R7} = I_{B457} $$
+  $$ U_{R7} = R_7 I_{R7} $$
+
+
+\end{figure}
+
+\subsection{Dosazení}
+\begin{figure}[H]
+
+  \begin{equation*}
+    \begin{aligned}
+      U          & = 100 + 80 = 180V                                                                                    \\
+      R_{45}     & = \frac{220 \cdot 220}{220 + 220} = 110 \ohm                                                         \\
+      R_{457}    & = 110 + 260 = 370 \ohm                                                                               \\
+      R_A        & = \frac{450 \cdot 810}{450 + 810 + 190} = \frac{7290}{29} \ohm                                       \\
+      R_B        & = \frac{450 \cdot 190}{450 + 810 + 190} = \frac{1710}{29} \ohm                                       \\
+      R_C        & = \frac{810 \cdot 190}{450 + 810 + 190} = \frac{3078}{29} \ohm                                       \\
+      R_{B457}   & = \frac{1710}{29} + 370 = \frac{12440}{29} \ohm                                                      \\
+      R_{C6}     & = \frac{3078}{29} + 720 = \frac{23958}{29} \ohm                                                      \\
+      R_{BC4567} & = \frac{\frac{12440}{29} \cdot \frac{23958}{29}}{\frac{12440}{29} + \frac{23958}{29}} = 282.354 \ohm \\
+      R_{ekv}    & = \frac{7290}{29} + 282.354 + 180 = 713.7343 \ohm                                                    \\
+      I          & = \frac{180}{713.7343} = 0.2522 A                                                                    \\
+      U_{BC4567} & = 282.354 \cdot 0.2522 = 71.2084 V                                                                   \\
+      I_{R7}     & = I_{B457} = \frac{71.2084}{\frac{12440}{29}} = \underline{\underline{1.66 \cdot 10^{-1} A}}         \\
+      UR7        & = 260 * 1.66 \cdot 10^{-1} = \underline{\underline{43.1601 V}}
+    \end{aligned}
+  \end{equation*}
 \end{figure}
