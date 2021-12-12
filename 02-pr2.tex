@@ -3,25 +3,50 @@
 \druhyZadani{C}
 
 \begin{circuitikz}
-      \draw
-      (0,0) to[dcvsource, v<=$U_i$](0,3)
-      (0,3) to[R, l=$R_i$] (3,3)
-      (3,3) to[R, l=$R_1$, i=$I_{R1}$, v=$U_{R1}$] (3,0)
-      (0,0) -- (3,0)
-      ;
+  \draw
+  (0,0) to[dcvsource, v<=$U_i$](0,3)
+  (0,3) to[R, l=$R_i$] (3,3)
+  (3,3) to[R, l=$R_1$, i=$I_{R1}$, v=$U_{R1}$] (3,0)
+  (0,0) -- (3,0)
+  ;
 \end{circuitikz}
 
 \begin{circuitikz}
-      \draw
-      (0,0) -- (0,3)
-      (0,3) to[R, l=$R_2$] (3,3)
-      (3,3) to[R, l=$R_4$] (6,3)
-      (3,3) to[R, l=$R_3$] (3,0)
-      (3,0) to[R, l=$R_5$] (6,0)
-      (6,0) -- (6,3)
-      (0,0) -- (3,0)
-      (0,3) node[ocirc]{} (0,3)
-      (3,3) node[ocirc]{} (3,3)
-      {[anchor=south] (0,3) node{A} (3,3) node{B}}
-      ;
+  \draw
+  (0,0) -- (0,3)
+  (0,3) to[R, l=$R_2$] (3,3)
+  (3,3) to[R, l=$R_4$] (6,3)
+  (3,3) to[R, l=$R_3$] (3,0)
+  (3,0) to[R, l=$R_5$] (6,0)
+  (6,0) -- (6,3)
+  (0,0) -- (3,0)
+  (0,3) node[ocirc]{} (0,3)
+  (3,3) node[ocirc]{} (3,3)
+  {[anchor=south] (0,3) node{A} (3,3) node{B}}
+  ;
 \end{circuitikz}
+
+$$ R_{45} = R_4 + R_5 $$
+$$ R_{345} = \frac{R_3 \cdot R_{45}}{R_3 + R_{45}} $$
+$$ R_i = \frac{R_2 \cdot R_{345}}{R_2 + R_{345}} $$
+
+$$ R_{ekv} = R_{345} + R_2 $$
+$$ I_x = \frac{U}{R_{ekv}} $$
+$$ U_i = R_2 \cdot I_x $$
+
+$$ I_{R1} = \frac{U_i}{R_i + R_1} $$
+$$ U_{R1} = R_1 \cdot I_{R1} $$
+
+Dosazení
+\begin{equation*}
+  \begin{aligned}
+    R_{45} &= R_4 + R_5 = 240 + 450 = 690 \ohm                                                                               \\
+    R_{345} &= \frac{R_3 \cdot R_{45}}{R_3 + R_{45}} = \frac{630 \cdot 690}{630 + 690} = \frac{7245}{22} \ohm                \\
+    R_i &= \frac{R_2 \cdot R_{345}}{R_2 + R_{345}} = \frac{220 \cdot \frac{7245}{22}}{220 + \frac{7245}{22}} = 131.8908 \ohm \\
+    R_{ekv} &= R_{345} + R_2 = \frac{7245}{22} + 220 = 549.3182 \ohm                                                         \\
+    I_x &= \frac{U}{R_{ekv}} = \frac{200}{549.3182} = 0.3641 A                                                               \\
+    U_i &= R_2 \cdot I_x = 220 \cdot 0.3641 = 80.0993 V                                                                      \\
+    I_{R1} &= \frac{U_i}{R_i + R_1} = \frac{0.0993}{131.8908 + 70} = \underline{\underline{3.9675 \cdot 10^{-1} A}}          \\
+    U_{R1} &= R_1 \cdot I_{R1} = 70 \cdot 3.9675 \cdot 10^{-1} = \underline{\underline{27.7722 V}}
+  \end{aligned}
+\end{equation*}

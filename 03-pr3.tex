@@ -38,11 +38,11 @@
 \begin{figure}[H]
   Nejprve převedeme všechny odpory na vodivosti
 
-  $$ G_1 = 1 / R_1 $$
-  $$ G_2 = 1 / R_2 $$
-  $$ G_3 = 1 / R_3 $$
-  $$ G_4 = 1 / R_4 $$
-  $$ G_5 = 1 / R_5 $$
+  $$ G_1 = \frac{1}{R_1} $$
+  $$ G_2 = \frac{1}{R_2} $$
+  $$ G_3 = \frac{1}{R_3} $$
+  $$ G_4 = \frac{1}{R_4} $$
+  $$ G_5 = \frac{1}{R_5} $$
 \end{figure}
 
 \subsection{Výpočet napětí}
@@ -112,11 +112,11 @@
 \subsection{Dosazení}
 \begin{figure}[H]
 
-  $$ G_1 = \frac{1}{46} S $$
-  $$ G_2 = \frac{1}{41} S $$
-  $$ G_3 = \frac{1}{53} S$$
-  $$ G_4 = \frac{1}{33} S$$
-  $$ G_5 = \frac{1}{29} S$$
+  $$ G_1 = \frac{1}{R_1} = \frac{1}{46} S $$
+  $$ G_2 = \frac{1}{R_2} = \frac{1}{41} S $$
+  $$ G_3 = \frac{1}{R_2} = \frac{1}{53} S$$
+  $$ G_4 = \frac{1}{R_4} = \frac{1}{33} S$$
+  $$ G_5 = \frac{1}{R_5} = \frac{1}{29} S$$
 
   $$
     \begin{pmatrix}
@@ -154,8 +154,8 @@
 
   \begin{equation*}
     \begin{aligned}
-      U_{R3} & = -23.9928 - (-20.8676) = \underline{\underline{-3.1252 V}}                    \\
-      I_{R3} & = -3.1252 \cdot \frac{1}{53} = \underline{\underline{-5.8965 \cdot 10^{-2} A}}
+      U_{R3} & = U_B - U_C = -23.9928 - (-20.8676) = \underline{\underline{-3.1252 V}}                       \\
+      I_{R3} & = U_{R3} G_{3} = -3.1252 \cdot \frac{1}{53} = \underline{\underline{-5.8965 \cdot 10^{-2} A}}
     \end{aligned}
   \end{equation*}
 
