@@ -82,7 +82,7 @@
     (4,0) --                  (7,0)
     ;
   \end{circuitikz}
-\end{figure}[H]
+\end{figure}
 
 \begin{figure}[H]
   Transfigurace trojúhelník na hvězdu
@@ -168,10 +168,34 @@
   Výpočet celkového proudu v obvodu
   $$ I = \frac{U}{R_{ekv}} $$
   Zpětné dopočítání proudu a napětí na $R_7$
-  $$ U_{BC4567} = R_{BC4567} I $$
-  $$ I_{B457} = \frac{U_{BC4567}}{R_{B457}} $$
-  $$ I_{R7} = I_{B457} $$
-  $$ U_{R7} = R_7 I_{R7} $$
+
+  \begin{circuitikz}
+    \draw
+    (0,0) to[dcvsource, v^<=U](0,3)
+    (0,3) to[R, l^=$R_A$]     (2,3)
+    (2,3) node[circ]{}        (2,3)
+    (2,3) to[R, l^=$R_B$]     (4,4)
+    (2,3) to[R, l^=$R_C$]     (4,2)
+    (4,2) to[R, l^=$R_6$]     (7,2)
+    (4,4) to[R, l^=$R_{457}$] (7,4)
+    (7,4) --                  (7,2)
+    (7,2) node[circ]{}        (7,2)
+    (7,2) --                  (7,0)
+    (0,0) --                  (1,0)
+    (1,0) to[R, l^=$R_8$]     (4,0)
+    (4,0) --                  (7,0)
+    ;
+  \end{circuitikz}
+
+  Nejprve vypočítáme napětí na $U_{BC4567}$. Poté proud v horní větvi, využíváme toho, že $U_{B457} = U_{BC4567}$, tento proud se rovná $I_{R7}$. Jako poslední krok vypočítáme podle ohmova zákona $U_{R7}$.
+  \begin{equation*}
+    \begin{aligned}
+      U_{BC4567} & = R_{BC4567} I                \\
+      I_{B457}   & = \frac{U_{BC4567}}{R_{B457}} \\
+      I_{R7}     & = I_{B457}                    \\
+      U_{R7}     & = R_7 I_{R7}                  \\
+    \end{aligned}
+  \end{equation*}
 
 
 \end{figure}
@@ -181,20 +205,20 @@
 
   \begin{equation*}
     \begin{aligned}
-      U          & = 100 + 80 = 180V                                                                                    \\
-      R_{45}     & = \frac{220 \cdot 220}{220 + 220} = 110 \ohm                                                         \\
-      R_{457}    & = 110 + 260 = 370 \ohm                                                                               \\
-      R_A        & = \frac{450 \cdot 810}{450 + 810 + 190} = \frac{7290}{29} \ohm                                       \\
-      R_B        & = \frac{450 \cdot 190}{450 + 810 + 190} = \frac{1710}{29} \ohm                                       \\
-      R_C        & = \frac{810 \cdot 190}{450 + 810 + 190} = \frac{3078}{29} \ohm                                       \\
-      R_{B457}   & = \frac{1710}{29} + 370 = \frac{12440}{29} \ohm                                                      \\
-      R_{C6}     & = \frac{3078}{29} + 720 = \frac{23958}{29} \ohm                                                      \\
-      R_{BC4567} & = \frac{\frac{12440}{29} \cdot \frac{23958}{29}}{\frac{12440}{29} + \frac{23958}{29}} = 282.354 \ohm \\
-      R_{ekv}    & = \frac{7290}{29} + 282.354 + 180 = 713.7343 \ohm                                                    \\
-      I          & = \frac{180}{713.7343} = 0.2522 A                                                                    \\
-      U_{BC4567} & = 282.354 \cdot 0.2522 = 71.2084 V                                                                   \\
-      I_{R7}     & = I_{B457} = \frac{71.2084}{\frac{12440}{29}} = \underline{\underline{1.66 \cdot 10^{-1} A}}         \\
-      UR7        & = 260 * 1.66 \cdot 10^{-1} = \underline{\underline{43.1601 V}}
+      U          & = U_1 + U_2 = 100 + 80 = 180V                                                                                                                          \\
+      R_{45}     & = \frac{R_4 \cdot R_5}{R_4 + R_5} = \frac{220 \cdot 220}{220 + 220} = 110 \ohm                                                                         \\
+      R_{457}    & = R_{45} + R_7 = 110 + 260 = 370 \ohm                                                                                                                  \\
+      R_A        & = \frac{R_1 \cdot R_2}{R_1 + R_2 + R_3} = \frac{450 \cdot 810}{450 + 810 + 190} = \frac{7290}{29} \ohm                                                 \\
+      R_B        & = \frac{R_1 \cdot R_3}{R_1 + R_2 + R_3} = \frac{450 \cdot 190}{450 + 810 + 190} = \frac{1710}{29} \ohm                                                 \\
+      R_C        & = \frac{R_2 \cdot R_3}{R_1 + R_2 + R_3} = \frac{810 \cdot 190}{450 + 810 + 190} = \frac{3078}{29} \ohm                                                 \\
+      R_{B457}   & = R_B + R_{457} = \frac{1710}{29} + 370 = \frac{12440}{29} \ohm                                                                                        \\
+      R_{C6}     & = R_C + R_6 = \frac{3078}{29} + 720 = \frac{23958}{29} \ohm                                                                                            \\
+      R_{BC4567} & = \frac{R_{B457} \cdot R_{C6}}{R_{B457} + R_{C6}} = \frac{\frac{12440}{29} \cdot \frac{23958}{29}}{\frac{12440}{29} + \frac{23958}{29}} = 282.354 \ohm \\
+      R_{ekv}    & = \R_A + R_{BC4567} + R_8 = \frac{7290}{29} + 282.354 + 180 = 713.7343 \ohm                                                                            \\
+      I          & = \frac{U}{R_{ekv}} = \frac{180}{713.7343} = 0.2522 A                                                                                                  \\
+      U_{BC4567} & = R_{BC4567} I = 282.354 \cdot 0.2522 = 71.2084 V                                                                                                      \\
+      I_{R7}     & = \frac{U_{BC4567}}{R_{B457}} = I_{B457} = \frac{71.2084}{\frac{12440}{29}} = \underline{\underline{1.66 \cdot 10^{-1} A}}                             \\
+      U_{R7}     & = R_7 I_{R7} = 260 * 1.66 \cdot 10^{-1} = \underline{\underline{43.1601 V}}
     \end{aligned}
   \end{equation*}
 \end{figure}
